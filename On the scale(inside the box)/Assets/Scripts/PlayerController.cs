@@ -19,6 +19,7 @@ namespace TarodevController
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
+        private Animator animator;
 
         #region Interface
 
@@ -30,10 +31,17 @@ namespace TarodevController
 
         private float _time;
 
+        // Land buffer to ensure land animation plays before jumping again
+        private float _landTime;
+        [SerializeField]private float _landBuffer = 0.1f; // tweak this to match your land animation length
+
+        private bool CanJump => _time > _landTime + _landBuffer;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
+            animator = GetComponent<Animator>();
 
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
         }
@@ -75,6 +83,10 @@ namespace TarodevController
             HandleGravity();
 
             ApplyMovement();
+
+            animator.SetBool("isGrounded", _grounded);
+            animator.SetBool("isWalking", Mathf.Abs(_frameInput.Move.x) > 0);
+            animator.SetFloat("velocityY", _frameVelocity.y);
         }
 
         #region Collisions
@@ -100,7 +112,9 @@ namespace TarodevController
                 _coyoteUsable = true;
                 _bufferedJumpUsable = true;
                 _endedJumpEarly = false;
+                _landTime = _time; // record the time we landed
                 GroundedChanged?.Invoke(true, Mathf.Abs(_frameVelocity.y));
+                animator.SetTrigger("Land");
             }
             // Left the Ground
             else if (_grounded && !groundHit)
@@ -133,7 +147,10 @@ namespace TarodevController
 
             if (!_jumpToConsume && !HasBufferedJump) return;
 
-            if (_grounded || CanUseCoyote) ExecuteJump();
+            if (_grounded || CanUseCoyote)
+            {
+                if (CanJump) ExecuteJump();
+            }
 
             _jumpToConsume = false;
         }
