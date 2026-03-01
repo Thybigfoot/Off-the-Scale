@@ -33,7 +33,7 @@ namespace TarodevController
 
         // Land buffer to ensure land animation plays before jumping again
         private float _landTime;
-        [SerializeField]private float _landBuffer = 0.1f; // tweak this to match your land animation length
+        [SerializeField] private float _landBuffer = 0.1f; // tweak this to match your land animation length
 
         private bool CanJump => _time > _landTime + _landBuffer;
 
@@ -127,6 +127,8 @@ namespace TarodevController
             Physics2D.queriesStartInColliders = _cachedQueryStartInColliders;
         }
 
+        
+
         #endregion
 
 
@@ -137,6 +139,8 @@ namespace TarodevController
         private bool _endedJumpEarly;
         private bool _coyoteUsable;
         private float _timeJumpWasPressed;
+
+
 
         private bool HasBufferedJump => _bufferedJumpUsable && _time < _timeJumpWasPressed + _stats.JumpBuffer;
         private bool CanUseCoyote => _coyoteUsable && !_grounded && _time < _frameLeftGrounded + _stats.CoyoteTime;
@@ -163,6 +167,11 @@ namespace TarodevController
             _coyoteUsable = false;
             _frameVelocity.y = _stats.JumpPower;
             Jumped?.Invoke();
+        }
+
+        public void AddVelocity(Vector2 velocity)
+        {
+            _frameVelocity += velocity;
         }
 
         #endregion
@@ -226,4 +235,7 @@ namespace TarodevController
         public event Action Jumped;
         public Vector2 FrameInput { get; }
     }
+
+   
+
 }
