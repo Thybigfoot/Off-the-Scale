@@ -47,6 +47,14 @@ public class Scales_gravity : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Weight")) onPlatform = true;
     }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Weight")) onPlatform = true;
+    }
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.CompareTag("Weight")) onPlatform = true;
+    }
     private void OnCollisionExit2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Weight"))
@@ -57,7 +65,8 @@ public class Scales_gravity : MonoBehaviour
            
         }
     }
-
-    
-
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.CompareTag("Weight")) onPlatform = false;
+    }
 }
