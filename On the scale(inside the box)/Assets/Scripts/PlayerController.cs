@@ -20,12 +20,14 @@ namespace TarodevController
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
         private Animator animator;
+        
 
         #region Interface
 
         public Vector2 FrameInput => _frameInput.Move;
         public event Action<bool, float> GroundedChanged;
         public event Action Jumped;
+        public bool JumpPressed => _frameInput.JumpDown;
 
         #endregion
 

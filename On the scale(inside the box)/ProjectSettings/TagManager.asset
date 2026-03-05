@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Weight
   - Scale
+  - Cube
   layers:
   - Default
   - TransparentFX

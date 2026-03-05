@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UIElements;
+
 public class Salting : MonoBehaviour
 {
     //settings
@@ -11,6 +11,9 @@ public class Salting : MonoBehaviour
     private bool isTouch = false;
     private Vector2 origin;
     private float targetDistance = 0f;
+    private Scales_Weight scalesWeight;
+    public float saltAmountPerSecond = 1f;
+
 
     private void Start()
     {
@@ -29,6 +32,7 @@ public class Salting : MonoBehaviour
             currentLength += expandSpeed * Time.deltaTime;
             UpdateCollider();
             CheckForScale();
+
         }
         else
         {
@@ -45,7 +49,9 @@ public class Salting : MonoBehaviour
                 col.enabled = true;
                 currentLength += expandSpeed * Time.deltaTime;
                 UpdateCollider();
+                scalesWeight.AddSalt(saltAmountPerSecond * Time.deltaTime);
             }
+
         }
     }
 
@@ -67,6 +73,7 @@ public class Salting : MonoBehaviour
         if (hit.collider != null && !isTouch)
         {
             targetDistance = hit.distance;
+            scalesWeight = hit.collider.gameObject.GetComponent<Scales_Weight>();
             isTouch = true;
         }
     }
