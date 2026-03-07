@@ -77,4 +77,5 @@ public class Salting : MonoBehaviour
             isTouch = true;
         }
     }
+   
 }

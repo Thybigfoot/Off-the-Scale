@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 30061227}
   - component: {fileID: 30061226}
   - component: {fileID: 30061225}
+  - component: {fileID: 30061228}
   m_Layer: 6
   m_Name: Scale A
   m_TagString: Scale
@@ -147,8 +148,8 @@ Transform:
   m_GameObject: {fileID: 30061223}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1653, y: -0.2149, z: 0}
-  m_LocalScale: {x: 3.3305, y: 0.5703, z: 1}
+  m_LocalPosition: {x: 2.3918, y: -0.5901, z: 0}
+  m_LocalScale: {x: 5.783413, y: 1.3206437, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 813687154}
@@ -161,14 +162,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30061223}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -285,6 +286,25 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &30061228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30061223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d0bd7d52881f24781523a05aab9108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scales_Weight
+  saltWeight: 0
+  cubeWeight: 0
+  maxSaltWeight: 10
+  _exitCooldown: 0.3
+  easeSpeed: 0.8
+  currentForce: 0
+  decaySpeed: 1.5
 --- !u!1 &192013532
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +560,7 @@ Transform:
   m_GameObject: {fileID: 469136970}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.21, y: -0.43, z: 0}
+  m_LocalPosition: {x: -28.1, y: 0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -731,7 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
@@ -798,7 +818,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 28.8
+  orthographic size: 12.84
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -823,7 +843,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -21.9, y: 2.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -922,6 +942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 813687154}
+  - component: {fileID: 813687155}
   m_Layer: 0
   m_Name: Scales Pair
   m_TagString: Untagged
@@ -938,7 +959,7 @@ Transform:
   m_GameObject: {fileID: 813687153}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.8602, y: 1.70163, z: 0}
+  m_LocalPosition: {x: -29.06, y: -1.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -946,6 +967,28 @@ Transform:
   - {fileID: 1507836873}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &813687155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813687153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a4fb8f1d775334a9ccba0bf7ad41b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scales_Movement
+  scalesWeightA: {fileID: 30061228}
+  scalesWeightB: {fileID: 1507836877}
+  cube: {fileID: 1840693110}
+  PlatA: {fileID: 30061225}
+  PlatB: {fileID: 1507836874}
+  Speed: 1
+  MaxHeight: 5
+  forceMultiplier: 0.01
+  apexBoostAmount: 2.75
+  Player: {fileID: 469136979}
 --- !u!1 &1507836872
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,6 +1001,7 @@ GameObject:
   - component: {fileID: 1507836876}
   - component: {fileID: 1507836875}
   - component: {fileID: 1507836874}
+  - component: {fileID: 1507836877}
   m_Layer: 6
   m_Name: Scale B
   m_TagString: Scale
@@ -974,8 +1018,8 @@ Transform:
   m_GameObject: {fileID: 1507836872}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.08, y: -0.2149, z: 0}
-  m_LocalScale: {x: 3.3305, y: 0.5703, z: 1}
+  m_LocalPosition: {x: 16.136, y: -0.5901, z: 0}
+  m_LocalScale: {x: 5.783413, y: 1.3206437, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 813687154}
@@ -988,14 +1032,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507836872}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1112,6 +1156,25 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1507836877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507836872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d0bd7d52881f24781523a05aab9108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scales_Weight
+  saltWeight: 0
+  cubeWeight: 0
+  maxSaltWeight: 10
+  _exitCooldown: 0.3
+  easeSpeed: 0.8
+  currentForce: 0
+  decaySpeed: 1.5
 --- !u!1 &1840693107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,7 +1190,7 @@ GameObject:
   - component: {fileID: 1840693108}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1206,7 +1269,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 20
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1216,7 +1279,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!212 &1840693111
 SpriteRenderer:
@@ -1286,7 +1349,7 @@ Transform:
   m_GameObject: {fileID: 1840693107}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.07503, y: 0.31355, z: 0}
+  m_LocalPosition: {x: -12.4, y: 54.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
