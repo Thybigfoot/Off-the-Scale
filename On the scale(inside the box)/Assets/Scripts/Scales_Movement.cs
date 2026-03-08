@@ -13,7 +13,7 @@ public class Scales_Movement : MonoBehaviour
     private Vector2 startPosition;
     private Vector2 startPositionB;
     [SerializeField] private float Speed = 1.0f;
-    [SerializeField] private float MaxHeight = 5f;
+    [SerializeField] public float MaxHeight = 5f;
     [SerializeField] private float forceMultiplier = 0.1f;
     private float weightDifference;
 
@@ -23,6 +23,7 @@ public class Scales_Movement : MonoBehaviour
     private bool _hasLaunched = false;
     [SerializeField] private float apexBoostAmount = 1.0f;
     public PlayerController Player;
+    public float DistanceMoved { get; private set; }
 
     public void Start()
     {
@@ -34,9 +35,9 @@ public class Scales_Movement : MonoBehaviour
         float forceA = scalesWeightA.currentForce * forceMultiplier;
         float forceB = scalesWeightB.currentForce * forceMultiplier;
 
-        float distanceMoved = PlatA.position.y - startPosition.y;
-        bool tooLow = distanceMoved <= -MaxHeight;
-        bool tooHigh = distanceMoved >= MaxHeight;
+        DistanceMoved = PlatA.position.y - startPosition.y;
+        bool tooLow = DistanceMoved <= -MaxHeight;
+        bool tooHigh = DistanceMoved >= MaxHeight;
         weightDifference = scalesWeightA.TotalWeight - scalesWeightB.TotalWeight;
         bool canMove = (weightDifference > 0 && !tooLow) || (weightDifference < 0 && !tooHigh);
         if (canMove)
@@ -57,7 +58,7 @@ public class Scales_Movement : MonoBehaviour
                 cube.linearVelocity = new Vector2(cube.linearVelocity.x, (newPosB.y - PlatB.position.y) / Time.fixedDeltaTime);
         }
 
-        float proximityToLimit = Mathf.Abs(distanceMoved) / MaxHeight;
+        float proximityToLimit = Mathf.Abs(DistanceMoved) / MaxHeight;
         if (!canMove)
         {
 
