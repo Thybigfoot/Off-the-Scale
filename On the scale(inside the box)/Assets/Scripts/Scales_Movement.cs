@@ -23,7 +23,11 @@ public class Scales_Movement : MonoBehaviour
     private bool _hasLaunched = false;
     [SerializeField] private float apexBoostAmount = 1.0f;
     public PlayerController Player;
+    [SerializeField] private float launchMultiplier = 0.1f;
     public float DistanceMoved { get; private set; }
+
+    public Platform_PlayerDetector detectorA;
+    public Platform_PlayerDetector detectorB;
 
     public void Start()
     {
@@ -63,22 +67,20 @@ public class Scales_Movement : MonoBehaviour
         {
 
             //inertia
-            if (lastVelA.y > 0 && !_hasLaunched)
+            if (lastVelA.y > 0 && !_hasLaunched && detectorA.playerOnPlatform)
             {
-                Vector2 launch = lastVelA;
+                Vector2 launch = lastVelA * launchMultiplier;
                 if (Player.JumpPressed) launch += new Vector2(0, apexBoostAmount * proximityToLimit);
                 Player.AddVelocity(launch);
                 _hasLaunched = true;
             }
-            else if (lastVelB.y > 0 && !_hasLaunched)
+            else if (lastVelB.y > 0 && !_hasLaunched && detectorB.playerOnPlatform)
             {
-                Vector2 launch = lastVelB;
+                Vector2 launch = lastVelB * launchMultiplier;
                 if (Player.JumpPressed) launch += new Vector2(0, apexBoostAmount * proximityToLimit);
                 Player.AddVelocity(launch);
                 _hasLaunched = true;
             }
-
-
         }
     }
    

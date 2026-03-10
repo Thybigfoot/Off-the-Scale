@@ -15,4 +15,9 @@ public class ButtonController : MonoBehaviour
 #endif
         Application.Quit();
     }
+
+    public void OnResetClick()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

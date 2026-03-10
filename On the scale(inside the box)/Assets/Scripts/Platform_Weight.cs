@@ -44,10 +44,16 @@ public class Scales_Weight : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Cube") && Time.time > _exitTime)
+        if (col.gameObject.CompareTag("Cube"))
         {
-            SetCubeWeight(0);
+            // if cube has significant horizontal velocity it was knocked off
+            bool knockedOff = Mathf.Abs(col.rigidbody.linearVelocity.x) > 0.5f;
+
+            if (Time.time > _exitTime || knockedOff)
+            {
+                SetCubeWeight(0);
+            }
         }
     }
-    
+
 }
