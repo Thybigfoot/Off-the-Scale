@@ -1,13 +1,9 @@
 using UnityEngine;
-
 public class SaltSpawner : MonoBehaviour
 {
-
     public GameObject saltPrefab;
     public Camera mainCamera;
-
     private GameObject activeSalt;
-    
 
     void Update()
     {
@@ -15,15 +11,22 @@ public class SaltSpawner : MonoBehaviour
         {
             Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mouseWorld.z = 0f;
-
             activeSalt = Instantiate(saltPrefab, mouseWorld, Quaternion.identity);
         }
-
         if (Input.GetMouseButtonUp(0))
         {
             if (activeSalt != null)
             {
-                Destroy(activeSalt, 0.5f); // slight delay for visual polish //whurturvur yur saur claurde
+                // Stop the salt script and collider immediately
+                activeSalt.GetComponent<Salting>().enabled = false;
+                activeSalt.GetComponent<BoxCollider2D>().enabled = false;
+
+                // Stop particles emitting but let existing ones fade
+                ParticleSystem particles = activeSalt.GetComponentInChildren<ParticleSystem>();
+                if (particles != null) particles.Stop();
+
+                // Destroy the whole object after particles have faded
+                Destroy(activeSalt, 3f);
             }
         }
     }

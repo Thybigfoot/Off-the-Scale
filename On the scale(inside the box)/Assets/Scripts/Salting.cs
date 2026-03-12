@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UIElements;
 public class Salting : MonoBehaviour
 {
     //settings
@@ -11,9 +11,8 @@ public class Salting : MonoBehaviour
     private bool isTouch = false;
     private Vector2 origin;
     private float targetDistance = 0f;
-    private Scales_Weight scalesWeight;
+    private ParticleSystem saltParticles;
     public float saltAmountPerSecond = 1f;
-
 
     private void Start()
     {
@@ -23,6 +22,8 @@ public class Salting : MonoBehaviour
         //start at zero height
         col.size = new Vector2(col.size.x, 0f);
         col.offset = Vector2.zero;
+        saltParticles = GetComponentInChildren<ParticleSystem>();
+        saltParticles.Play(); // start immediately on spawn
     }
 
     void Update()
@@ -32,7 +33,6 @@ public class Salting : MonoBehaviour
             currentLength += expandSpeed * Time.deltaTime;
             UpdateCollider();
             CheckForScale();
-
         }
         else
         {
@@ -45,13 +45,13 @@ public class Salting : MonoBehaviour
             }
             else
             {
-                // Salt has visually arrived, collider activates exactly when stream reaches scale
                 col.enabled = true;
+                // continuously add salt weight while stream is active
+                if (targetScaleWeight != null)
+                    targetScaleWeight.AddSalt(saltAmountPerSecond * Time.deltaTime);
                 currentLength += expandSpeed * Time.deltaTime;
                 UpdateCollider();
-                scalesWeight.AddSalt(saltAmountPerSecond * Time.deltaTime);
             }
-
         }
     }
 
@@ -61,6 +61,8 @@ public class Salting : MonoBehaviour
         col.size = new Vector2(col.size.x, currentLength);
         col.offset = new Vector2(0f, -currentLength / 2f);
     }
+
+    private Scales_Weight targetScaleWeight = null;
 
     void CheckForScale()
     {
@@ -73,9 +75,9 @@ public class Salting : MonoBehaviour
         if (hit.collider != null && !isTouch)
         {
             targetDistance = hit.distance;
-            scalesWeight = hit.collider.gameObject.GetComponent<Scales_Weight>();
+            targetScaleWeight = hit.collider.GetComponent<Scales_Weight>();
+            Debug.Log("Hit: " + hit.collider.gameObject.name + " | ScaleWeight found: " + (targetScaleWeight != null));
             isTouch = true;
         }
     }
-   
 }
