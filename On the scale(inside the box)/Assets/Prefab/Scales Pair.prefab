@@ -960,10 +960,11 @@ MonoBehaviour:
   PlatB: {fileID: 758734319073315042}
   Speed: 1
   MaxHeight: 3.5
-  forceMultiplier: 0.01
+  forceMultiplier: 0.225
   apexBoostAmount: 2.75
   Player: {fileID: 0}
   launchMultiplier: 0.1
+  jumpBuffer: 0.5
   detectorA: {fileID: 4491518110269454855}
   detectorB: {fileID: 429624219679587198}
 --- !u!1 &3150954326756530508

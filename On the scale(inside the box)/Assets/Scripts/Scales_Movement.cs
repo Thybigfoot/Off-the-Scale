@@ -25,6 +25,9 @@ public class Scales_Movement : MonoBehaviour
     public PlayerController Player;
     [SerializeField] private float launchMultiplier = 0.1f;
     public float DistanceMoved { get; private set; }
+    [SerializeField] private float jumpBuffer = 0.3f;
+    private float _launchTime;
+    private bool _lateBoostApplied = false;
 
     public Platform_PlayerDetector detectorA;
     public Platform_PlayerDetector detectorB;
@@ -39,13 +42,17 @@ public class Scales_Movement : MonoBehaviour
         float forceA = scalesWeightA.currentForce * forceMultiplier;
         float forceB = scalesWeightB.currentForce * forceMultiplier;
 
+        bool jumpBuffered = Player._timeJumpWasPressed > 0 &&
+                    (Player.ElapsedTime - Player._timeJumpWasPressed) < jumpBuffer;
+
         DistanceMoved = PlatA.position.y - startPosition.y;
         bool tooLow = DistanceMoved <= -MaxHeight;
         bool tooHigh = DistanceMoved >= MaxHeight;
         weightDifference = scalesWeightA.TotalWeight - scalesWeightB.TotalWeight;
         bool canMove = (weightDifference > 0 && !tooLow) || (weightDifference < 0 && !tooHigh);
-        if (canMove)
+        if (canMove )
         {
+            _lateBoostApplied = false;
             _hasLaunched = false;
             Vector2 newPosA = PlatA.position + new Vector2(0, -weightDifference * Speed * Time.deltaTime - forceA + forceB);
             Vector2 newPosB = PlatB.position + new Vector2(0, weightDifference * Speed * Time.deltaTime + forceA - forceB);
@@ -61,26 +68,36 @@ public class Scales_Movement : MonoBehaviour
             else if (scalesWeightB.HasCube)
                 cube.linearVelocity = new Vector2(cube.linearVelocity.x, (newPosB.y - PlatB.position.y) / Time.fixedDeltaTime);
         }
+        bool lateJump = Time.time < _launchTime + jumpBuffer &&
+                Player._timeJumpWasPressed > _launchTime;
 
         float proximityToLimit = Mathf.Abs(DistanceMoved) / MaxHeight;
+        
         if (!canMove)
         {
 
             //inertia
             if (lastVelA.y > 0 && !_hasLaunched && detectorA.playerOnPlatform)
             {
+                _launchTime = Time.time;
                 Vector2 launch = lastVelA * launchMultiplier;
-                if (Player.JumpPressed) launch += new Vector2(0, apexBoostAmount * proximityToLimit);
+                if (jumpBuffered) launch += new Vector2(0, apexBoostAmount * proximityToLimit);
                 Player.AddVelocity(launch);
                 _hasLaunched = true;
             }
             else if (lastVelB.y > 0 && !_hasLaunched && detectorB.playerOnPlatform)
             {
+                _launchTime = Time.time;
                 Vector2 launch = lastVelB * launchMultiplier;
-                if (Player.JumpPressed) launch += new Vector2(0, apexBoostAmount * proximityToLimit);
+                if (jumpBuffered) launch += new Vector2(0, apexBoostAmount * proximityToLimit);
                 Player.AddVelocity(launch);
                 _hasLaunched = true;
             }
+        }
+        if (lateJump && !_lateBoostApplied && _hasLaunched)
+        {
+            Player.AddVelocity(new Vector2(0, apexBoostAmount * proximityToLimit));
+            _lateBoostApplied = true;
         }
     }
    

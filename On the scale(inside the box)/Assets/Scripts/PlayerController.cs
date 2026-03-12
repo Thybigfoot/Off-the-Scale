@@ -28,10 +28,12 @@ namespace TarodevController
         public event Action<bool, float> GroundedChanged;
         public event Action Jumped;
         public bool JumpPressed => _frameInput.JumpDown;
+        public float ElapsedTime => _time; 
 
         #endregion
 
         private float _time;
+        
 
         // Land buffer to ensure land animation plays before jumping again
         private float _landTime;
@@ -140,7 +142,7 @@ namespace TarodevController
         private bool _bufferedJumpUsable;
         private bool _endedJumpEarly;
         private bool _coyoteUsable;
-        private float _timeJumpWasPressed;
+        public float _timeJumpWasPressed;
 
 
 
