@@ -1,15 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace TarodevController
 {
-    /// <summary>
-    /// Hey!
-    /// Tarodev here. I built this controller as there was a severe lack of quality & free 2D controllers out there.
-    /// I have a premium version on Patreon, which has every feature you'd expect from a polished controller. Link: https://www.patreon.com/tarodev
-    /// You can play and compete for best times here: https://tarodev.itch.io/extended-ultimate-2d-controller
-    /// If you hve any questions or would like to brag about your score, come to discord: https://discord.gg/tarodev
-    /// </summary>
+    //this script is from https://www.youtube.com/watch?v=3sWTzMsmdx8
+    //go check it out becuase all of this is lowkey insane
+
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
@@ -20,7 +17,9 @@ namespace TarodevController
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
         private Animator animator;
-        
+        private Vector3 _originalScale;
+
+
 
         #region Interface
 
@@ -46,7 +45,7 @@ namespace TarodevController
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
             animator = GetComponent<Animator>();
-
+            _originalScale = transform.localScale;
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
         }
 
@@ -91,6 +90,8 @@ namespace TarodevController
             animator.SetBool("isGrounded", _grounded);
             animator.SetBool("isWalking", Mathf.Abs(_frameInput.Move.x) > 0);
             animator.SetFloat("velocityY", _frameVelocity.y);
+            Debug.Log("Velocity being applied: " + _frameVelocity);
+            Debug.Log("Grounded: " + _grounded);
         }
 
         #region Collisions
@@ -103,7 +104,7 @@ namespace TarodevController
             Physics2D.queriesStartInColliders = false;
 
             // Ground and Ceiling
-            bool groundHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.down, _stats.GrounderDistance, ~_stats.PlayerLayer);
+            bool groundHit = Physics2D.Raycast(_col.bounds.center, Vector2.down, _col.bounds.extents.y + 0.5f, ~_stats.PlayerLayer);
             bool ceilingHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _stats.GrounderDistance, ~_stats.PlayerLayer);
 
             // Hit a Ceiling
@@ -127,8 +128,6 @@ namespace TarodevController
                 _frameLeftGrounded = _time;
                 GroundedChanged?.Invoke(false, 0);
             }
-
-            Physics2D.queriesStartInColliders = _cachedQueryStartInColliders;
         }
 
         
@@ -171,6 +170,7 @@ namespace TarodevController
             _coyoteUsable = false;
             _frameVelocity.y = _stats.JumpPower;
             Jumped?.Invoke();
+            animator.ResetTrigger("Land"); // clear any queued Land trigger
         }
 
         public void AddVelocity(Vector2 velocity)
@@ -192,6 +192,14 @@ namespace TarodevController
             else
             {
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+            }
+            if (_frameInput.Move.x != 0)
+            {
+                transform.localScale = new Vector3(
+                    _originalScale.x * Mathf.Sign(_frameInput.Move.x),
+                    _originalScale.y,
+                    _originalScale.z
+                );
             }
         }
 
