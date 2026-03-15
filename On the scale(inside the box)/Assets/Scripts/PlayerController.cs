@@ -57,6 +57,12 @@ namespace TarodevController
 
         private void GatherInput()
         {
+            if (TutorialManager.TutorialActive)
+            {
+                _frameInput = new FrameInput(); // empty input, no movement
+                return;
+            }
+
             _frameInput = new FrameInput
             {
                 JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C),
