@@ -191,6 +191,38 @@ PrefabInstance:
       propertyPath: lines.Array.data[0].text
       value: Well done! This one's a bit trickier...
       objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1253361063}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: panelAngelus
+      value: 
+      objectReference: {fileID: 733501795}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: panelMercury
+      value: 
+      objectReference: {fileID: 1530332973}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[0].text
+      value: This one is a bit trickier...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[1].text
+      value: Good luck!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[0].isMercury
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[1].isMercury
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

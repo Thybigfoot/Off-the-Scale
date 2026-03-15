@@ -18,6 +18,7 @@ public class ButtonController : MonoBehaviour
 
     public void OnResetClick()
     {
+        TutorialManager.SkipOnReload = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -1037,6 +1037,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &816205023 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3168916893935846010, guid: 7779cc991187fce438ec228275533565, type: 3}
+  m_PrefabInstance: {fileID: 495717311}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816205021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54956e67c41b6e24d9fd6df0c9c1bbda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &870200455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1196,6 +1207,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 7467897799564307842, guid: 54b62917205fec248b513ff247ef21c4, type: 3}
+      propertyPath: key
+      value: 
+      objectReference: {fileID: 816205023}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1282,6 +1297,38 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7170156782136848651, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[1].isMercury
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 313546154}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: panelAngelus
+      value: 
+      objectReference: {fileID: 946615246}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: panelMercury
+      value: 
+      objectReference: {fileID: 693371583}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[0].text
+      value: This is the final stop
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[1].text
+      value: Godspeed my child!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[0].isMercury
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
       propertyPath: lines.Array.data[1].isMercury
       value: 1
       objectReference: {fileID: 0}
@@ -2056,6 +2103,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 731264133981378449, guid: 1fa1b3c593215564ab9427544b30828c, type: 3}
+      propertyPath: m_Size.x
+      value: 8.778824
+      objectReference: {fileID: 0}
+    - target: {fileID: 731264133981378449, guid: 1fa1b3c593215564ab9427544b30828c, type: 3}
+      propertyPath: m_Size.y
+      value: 8.632437
+      objectReference: {fileID: 0}
+    - target: {fileID: 731264133981378449, guid: 1fa1b3c593215564ab9427544b30828c, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.041822433
+      objectReference: {fileID: 0}
+    - target: {fileID: 731264133981378449, guid: 1fa1b3c593215564ab9427544b30828c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.17774224
+      objectReference: {fileID: 0}
     - target: {fileID: 2092622452629729389, guid: 1fa1b3c593215564ab9427544b30828c, type: 3}
       propertyPath: m_Name
       value: Cube (1)
@@ -2229,7 +2292,7 @@ PrefabInstance:
     - target: {fileID: 3287736372161913343, guid: d863ab9b990e6674ebe509d61eabf6f1, type: 3}
       propertyPath: cube
       value: 
-      objectReference: {fileID: 1187508484}
+      objectReference: {fileID: 134184082}
     - target: {fileID: 3287736372161913343, guid: d863ab9b990e6674ebe509d61eabf6f1, type: 3}
       propertyPath: Player
       value: 

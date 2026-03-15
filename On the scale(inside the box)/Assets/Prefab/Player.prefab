@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TarodevController.PlayerController
   _stats: {fileID: 11400000, guid: bf389ec9f67f34441ac92f07e9a4228f, type: 2}
-  _landBuffer: 0.001
+  _landBuffer: 0.125
   _timeJumpWasPressed: 0
 --- !u!95 &6556306908887781534
 Animator:
