@@ -96,8 +96,6 @@ namespace TarodevController
             animator.SetBool("isGrounded", _grounded);
             animator.SetBool("isWalking", Mathf.Abs(_frameInput.Move.x) > 0);
             animator.SetFloat("velocityY", _frameVelocity.y);
-            Debug.Log("Velocity being applied: " + _frameVelocity);
-            Debug.Log("Grounded: " + _grounded);
         }
 
         #region Collisions
