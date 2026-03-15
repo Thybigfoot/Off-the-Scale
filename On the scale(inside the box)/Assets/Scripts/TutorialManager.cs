@@ -1,43 +1,34 @@
 using UnityEngine;
 using TMPro;
-
 public class TutorialManager : MonoBehaviour
 {
     public static bool TutorialActive = false;
-    private static bool _hasCompleted = false;
-
+    public static bool SkipOnReload = false; // added
+    private bool _hasCompleted = false;
     [System.Serializable]
     public struct DialogueLine
     {
         public bool isMercury;
         public string text;
     }
-
     [Header("Mercury")]
     [SerializeField] private GameObject panelMercury;
-
     [Header("Angelus")]
     [SerializeField] private GameObject panelAngelus;
-
     [Header("Shared")]
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private float delayBeforeShow = 1f;
     [SerializeField] private DialogueLine[] lines;
-
     private int _currentLine = 0;
     private bool _started = false;
-
     private void Start()
     {
         panelMercury.SetActive(false);
         panelAngelus.SetActive(false);
         dialogueText.gameObject.SetActive(false);
-
-        if (_hasCompleted) return;
-
+        if (_hasCompleted || SkipOnReload) return; // added SkipOnReload check
         Invoke(nameof(ShowTutorial), delayBeforeShow);
     }
-
     private void ShowTutorial()
     {
         TutorialActive = true;
@@ -45,11 +36,9 @@ public class TutorialManager : MonoBehaviour
         dialogueText.gameObject.SetActive(true);
         ShowLine(_currentLine);
     }
-
     private void Update()
     {
         if (!_started) return;
-
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
             _currentLine++;
@@ -59,12 +48,10 @@ public class TutorialManager : MonoBehaviour
                 ShowLine(_currentLine);
         }
     }
-
     private void ShowLine(int index)
     {
         DialogueLine line = lines[index];
         dialogueText.text = line.text;
-
         if (line.isMercury)
         {
             panelMercury.SetActive(true);
@@ -76,7 +63,6 @@ public class TutorialManager : MonoBehaviour
             panelAngelus.SetActive(true);
         }
     }
-
     private void EndTutorial()
     {
         TutorialActive = false;

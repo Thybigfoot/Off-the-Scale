@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2252511119764106466}
-  - component: {fileID: 7170156782136848651}
+  - component: {fileID: 8410169369649938629}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7170156782136848651
+--- !u!114 &8410169369649938629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,29 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4535384420343895133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e2d377801a9fe34e88daf7f2f5100be, type: 3}
+  m_Script: {fileID: 11500000, guid: 24d32fe1e35dd7444a412d7b9c70dc59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialManager
   panelMercury: {fileID: 0}
   panelAngelus: {fileID: 0}
   dialogueText: {fileID: 0}
   delayBeforeShow: 1
-  lines:
-  - isMercury: 1
-    text: Welcome, to Salarium! And your name is...
-  - isMercury: 0
-    text: Angelus...
-  - isMercury: 1
-    text: Well I, mercury, will be your humble guide
-  - isMercury: 1
-    text: through the trade route!
-  - isMercury: 1
-    text: You can use the arrow keys (or AD!) to move)
-  - isMercury: 1
-    text: Use either space or c to jump...
-  - isMercury: 1
-    text: And hold your mouse to shake salt!
-  - isMercury: 1
-    text: You can use the salt to move the scales
-  - isMercury: 1
-    text: Grab the key and get to the door!
+  lines: []

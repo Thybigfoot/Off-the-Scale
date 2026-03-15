@@ -1534,6 +1534,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8525224279539250738, guid: 62544cdcfc949bb428227521b53bce55, type: 3}
+      propertyPath: _landBuffer
+      value: 0.125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1676,6 +1680,94 @@ PrefabInstance:
       propertyPath: panelMercury
       value: 
       objectReference: {fileID: 2080109825}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1094425718}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: panelAngelus
+      value: 
+      objectReference: {fileID: 1752750873}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: panelMercury
+      value: 
+      objectReference: {fileID: 2080109825}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[0].text
+      value: Welcome, to Salarium! And your name is...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[1].text
+      value: Angelus...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[2].text
+      value: Well I, mercury, will be your humble guide
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[3].text
+      value: through the trade route!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[4].text
+      value: You can use the arrow keys (or AD!) to move)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[5].text
+      value: Use either space or c to jump...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[6].text
+      value: And hold your mouse to shake salt!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[7].text
+      value: You can use the salt to move the scales
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[8].text
+      value: Grab the key and get to the door!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[0].isMercury
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[1].isMercury
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[2].isMercury
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[3].isMercury
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[4].isMercury
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[5].isMercury
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[6].isMercury
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[7].isMercury
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: lines.Array.data[8].isMercury
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
