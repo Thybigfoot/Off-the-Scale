@@ -25,7 +25,7 @@ public class Scales_Movement : MonoBehaviour
     public PlayerController Player;
     [SerializeField] private float launchMultiplier = 0.1f;
     public float DistanceMoved { get; private set; }
-    [SerializeField] private float jumpBuffer = 0.3f;
+    [SerializeField] private float jumpBuffer = 1.0f;
     private float _launchTime;
     private bool _lateBoostApplied = false;
 

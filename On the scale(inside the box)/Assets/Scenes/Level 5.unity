@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 469136979}
     - target: {fileID: 3287736372161913343, guid: d863ab9b990e6674ebe509d61eabf6f1, type: 3}
       propertyPath: jumpBuffer
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3287736372161913343, guid: d863ab9b990e6674ebe509d61eabf6f1, type: 3}
       propertyPath: forceMultiplier
@@ -1681,6 +1681,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 469136979}
+    - target: {fileID: 3287736372161913343, guid: d863ab9b990e6674ebe509d61eabf6f1, type: 3}
+      propertyPath: jumpBuffer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7529376900389410006, guid: d863ab9b990e6674ebe509d61eabf6f1, type: 3}
       propertyPath: m_LocalScale.x
       value: -0.39012

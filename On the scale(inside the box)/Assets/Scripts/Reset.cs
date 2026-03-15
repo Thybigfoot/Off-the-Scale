@@ -3,6 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class Reset : MonoBehaviour
 {
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reseting();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player")) Reseting();
@@ -10,8 +18,7 @@ public class Reset : MonoBehaviour
 
     public void Reseting()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
         TutorialManager.SkipOnReload = true;
-        SceneManager.LoadScene(currentScene);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
