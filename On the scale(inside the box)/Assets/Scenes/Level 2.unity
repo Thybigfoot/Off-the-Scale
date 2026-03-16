@@ -204,6 +204,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1530332973}
     - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
+      propertyPath: delayBeforeShow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410169369649938629, guid: f63230ab1983b6948bd4ddf124878b15, type: 3}
       propertyPath: lines.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -671,11 +675,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8459008342118053895, guid: 749c7110e7871a84d831a5a318eedc73, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -18.2
+      value: 47.7
       objectReference: {fileID: 0}
     - target: {fileID: 8459008342118053895, guid: 749c7110e7871a84d831a5a318eedc73, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8667173029520514611, guid: 749c7110e7871a84d831a5a318eedc73, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
