@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 339994175047807085}
   - component: {fileID: 5059331112187024412}
   - component: {fileID: 8486483686162473854}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Death Bounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}

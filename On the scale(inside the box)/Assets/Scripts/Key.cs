@@ -10,9 +10,6 @@ public class Key : MonoBehaviour
         {
             hasKey = true;
             Destroy(gameObject);
-        }
-        else
-        {
             //bimbimbambam
         }
     }
