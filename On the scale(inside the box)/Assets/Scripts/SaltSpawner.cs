@@ -1,3 +1,4 @@
+using TarodevController;
 using UnityEngine;
 public class SaltSpawner : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class SaltSpawner : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            PlayerController.IsSalting = true;
             Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mouseWorld.z = 0f;
             activeSalt = Instantiate(saltPrefab, mouseWorld, Quaternion.identity);
         }
         if (Input.GetMouseButtonUp(0))
         {
+            PlayerController.IsSalting = false;
             if (activeSalt != null)
             {
                 // Stop the salt script and collider immediately

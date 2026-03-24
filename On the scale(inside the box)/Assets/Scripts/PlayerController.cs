@@ -18,6 +18,7 @@ namespace TarodevController
         private bool _cachedQueryStartInColliders;
         private Animator animator;
         private Vector3 _originalScale;
+        public static bool IsSalting = false;
 
 
 
@@ -57,9 +58,9 @@ namespace TarodevController
 
         private void GatherInput()
         {
-            if (TutorialManager.TutorialActive)
+            if (TutorialManager.TutorialActive || PlayerController.IsSalting)
             {
-                _frameInput = new FrameInput(); // empty input, no movement
+                _frameInput = new FrameInput();
                 return;
             }
 
@@ -96,6 +97,7 @@ namespace TarodevController
             animator.SetBool("isGrounded", _grounded);
             animator.SetBool("isWalking", Mathf.Abs(_frameInput.Move.x) > 0);
             animator.SetFloat("velocityY", _frameVelocity.y);
+            animator.SetBool("isSalting", IsSalting);
         }
 
         #region Collisions
